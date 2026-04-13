@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound splitter Studio</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+    <!-- Font moderni e puliti -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    
+    <div class="language-switcher glass-panel" id="langSwitcher" title="Change Language">
+        ITA
+    </div>
+
+    <main class="glass-container">
+        <header>
+            <h1>Sound splitter <span>Studio.</span></h1>
+            <p data-i18n="subtitle">Estrai voci cristalline con intelligenza artificiale on-device.</p>
+        </header>
+
+        <section class="upload-zone" id="upload-zone">
+            <div class="upload-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <p>
+                    <span data-i18n="upload_text">Scarta o clicca per caricare un audio</span>
+                </p>
+                <span class="subtext" data-i18n="upload_subtext">MP3, WAV supportati</span>
+                <input type="file" id="fileInp" accept="audio/*" hidden>
+            </div>
+            <div class="controls glass-panel">
+                <label for="stems-select" data-i18n="label_mode">Modalità Estrazione:</label>
+                <select id="stems-select">
+                    <option value="2" selected data-i18n="opt_2_stems">Voce & Base Strumentale (Veloce)</option>
+                    <option value="4" data-i18n="opt_4_stems">Tutti i 4 Canali (Voce/Basso/Batteria/Altro)</option>
+                </select>
+                <button id="processBtn" disabled data-i18n="btn_extract">Estrai Stems</button>
+            </div>
+        </section>
+
+        <!-- Spinner di caricamento -->
+        <section class="loading-zone hidden" id="loading-zone">
+            <div class="spinner"></div>
+            <h3 data-i18n="loading_title">Magia in corso...</h3>
+            <p data-i18n="loading_desc">Stiamo processando l'audio tramite il chip del Mac. Questo richiederà circa 20 secondi.</p>
+        </section>
+
+        <!-- Risultati visualizzati dinamicamente -->
+        <section class="results-zone hidden" id="results-zone">
+            <h2 data-i18n="results_title">Tracce Estratte!</h2>
+            <div class="audio-grid" id="audio-grid">
+                <!-- i players pioveranno qui tramite js -->
+            </div>
+            <button class="outline-btn" id="resetBtn" data-i18n="btn_reset">Carica Nuova Traccia</button>
+        </section>
+    </main>
+
+    <script src="/frontend/i18n.js"></script>
+    <script src="/frontend/app.js"></script>
+</body>
+</html>
